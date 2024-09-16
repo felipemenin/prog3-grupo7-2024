@@ -1,7 +1,15 @@
+import Footer from "./Components/Footer/Footer";
+import Header from "./Components/Header/Header";
+import SearchForm from "./Components/SearchForm/SearchForm";
 
 function App() {
   return (
-    <p> Felipe Menin </p>
+    <>
+    <SearchForm/>
+    <Header />
+    
+    <Footer />
+    </>
   );
 }
 

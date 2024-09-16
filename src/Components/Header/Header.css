@@ -1,0 +1,23 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #080809;
+    color: #fff
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.user img {
+    width: 1px;
+    border-radius: 90%;
+    margin-left: 10px;
+}
