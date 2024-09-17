@@ -8,7 +8,6 @@ const Home = () => {
       <SearchForm/>
 
       <main>
-        <h2>Peliculas Populares</h2>
         <MoviesGrid/>
       </main>
     </>
