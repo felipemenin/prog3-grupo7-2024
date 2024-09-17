@@ -48,7 +48,7 @@ class Movie extends Component {
         <br />
           <Link to={`/movie/id/${id}`}>Ver detalle de pelicula</Link><br />
           <span onClick={()=>this.handleFavorite()}>
-          {esFavorito ?  <FaHeart color="red" /> : <FaRegHeart />}
+          {esFavorito ? <p> <FaHeart color="red" /> Quitar de favoritos  </p>  : <p> <FaRegHeart /> Agregar a favoritos  </p> }
         </span>
           
 
