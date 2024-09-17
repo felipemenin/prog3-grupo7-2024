@@ -1,13 +1,12 @@
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
-import SearchForm from "./Components/SearchForm/SearchForm";
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <>
-    <SearchForm/>
     <Header />
-    
+    <Home/>
     <Footer />
     </>
   );
