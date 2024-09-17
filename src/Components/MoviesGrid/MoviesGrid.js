@@ -2,14 +2,12 @@ import { Component } from "react";
 import Movie from "../Movie/Movie";
 import "./MoviesGrid.css"
 
-
 class MoviesGrid extends Component {
   constructor() {
     super();
     this.state = {
     popularMovies: [],
     carteleraMovies: [],
-    numero: 2
     };
   }
 
