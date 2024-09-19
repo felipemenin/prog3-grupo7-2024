@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./SearchForm.css"
 
 class SearchForm extends Component {
   constructor() {
@@ -22,14 +23,15 @@ class SearchForm extends Component {
   }
   render() {
     return (
+      <section>
       <form onSubmit={(event)=> event.preventDefault()}>
-        <input
+        <input className="search-form_input"
           onChange={(event) => this.handleNameChange(event)}
           name="userName"
           value={this.state.inputName}
-        />
-        <button onClick={()=> this.handleFormSubmit()} type="submit">Enviar</button>
+        /> <button className="search-form_button" onClick={()=> this.handleFormSubmit()} type="submit">Buscar pelicula</button>
       </form>
+      </section>
     );
   }
 }

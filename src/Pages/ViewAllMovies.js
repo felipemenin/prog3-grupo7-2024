@@ -49,13 +49,15 @@ class ViewAllMovies extends Component {
   }
 
   render() {
+
     return (
       <>
-        <h2>Todas las películas {this.state.name === "popular" ? "populares" : "en cartelera"}</h2>
-        <input className="input"
-          onChange={(event) => this.handleFilterChange(event)}
+       
+        <input  style={{marginTop: "10px",marginLeft: "10px", border: "solid 1px var(--light-gray)", display: "block; width: 30%", padding: "7px 35px 7px 7px", borderRadius: "3px", height: "25px", fontSize: "1.5em;"}}
+         onChange={(event) => this.handleFilterChange(event)}
           value={this.state.filterValue}
         />
+         <h2>Todas las películas {this.state.name === "popular" ? "populares" : "en cartelera"}</h2>
         <section className="movie-container">
           <MoviesGrid
             movies={
