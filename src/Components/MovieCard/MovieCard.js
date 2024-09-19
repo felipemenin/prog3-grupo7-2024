@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom"
 import {Component} from 'react'
-import "./Movie.css"
+import "./MovieCard.css"
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 
 
 
-class Movie extends Component {
+class MovieCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,4 +62,4 @@ class Movie extends Component {
 </>    );
     };
     }
-    export default Movie;
+    export default MovieCard;
