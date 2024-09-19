@@ -2,7 +2,6 @@ import { Component } from "react";
 import MoviesGrid from "../Components/MoviesGrid/MoviesGrid";
 import SearchForm from "../Components/SearchForm/SearchForm";
 
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -33,35 +32,41 @@ class Home extends Component {
       .catch((e) => {
         console.log(e);
       });
-      
   }
 
-  ;
   render() {
-    const fivepopularMovies = this.state.popularMovies.slice(0,5);
-    const fiveCarteleraMovies = this.state.carteleraMovies.slice(0,5);
+    const fivepopularMovies = this.state.popularMovies.slice(0, 5);
+    const fiveCarteleraMovies = this.state.carteleraMovies.slice(0, 5);
     return (
       <>
-       <main>
-        <h1>App</h1>
-        <SearchForm />
-        <h2>Peliculas de cartelera</h2>
-       
-        <MoviesGrid movies={fiveCarteleraMovies} />
-        
-        <button><a href="/popular" style={{ textDecoration: 'none', color: 'white' }}>Ver todas</a></button>
+        <main>
+          <SearchForm />
+          <h2>Peliculas populares</h2>
 
-        <h2>Peliculas populares</h2>
-        <section className="movie-container">
-        <MoviesGrid movies={fivepopularMovies} />
-        </section>
-        <button><a href="/cartelera" style={{ textDecoration: 'none', color: 'white' }}>Ver todas</a></button>
+          <MoviesGrid movies={fiveCarteleraMovies} />
 
-  
+          <button>
+            <a
+              href="/viewall/popular"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Ver todas
+            </a>
+          </button>
+
+          <h2>Peliculas en cartelera</h2>
+          <section className="movie-container">
+            <MoviesGrid movies={fivepopularMovies} />
+          </section>
+          <button>
+            <a
+              href="/viewall/now_playing"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Ver todas
+            </a>
+          </button>
         </main>
- 
-
-       
       </>
     );
   }

@@ -4,7 +4,6 @@ import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import Home from "./Pages/Home";
 import ViewAllMovies from "./Pages/ViewAllMovies";
-import { Route } from 'react-router-dom'
 
 
 function App() {
@@ -12,9 +11,9 @@ function App() {
     <>
     <Header />
     <Switch>
-     <Route path="/" exaxt component={Home}/>
+     <Route path="/" exact component={Home}/>
      <Route path="/viewall/:name" component={ViewAllMovies}/>
-     <Route path="/pelicula/:id" component={Detail}/>
+     <Route path="/pelicula/:id" />
     </Switch>
     <Footer />
     </>

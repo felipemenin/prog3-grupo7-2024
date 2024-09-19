@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #656262;
+    background-color: whitesmoke;
     color: #e0e0e0;
   }
   
@@ -34,7 +34,7 @@ body {
   /* Títulos */
   h2 {
     font-size: 28px;
-    color: #ff6b6b;
+    color: black;
     margin-bottom: 20px;
   }
   
