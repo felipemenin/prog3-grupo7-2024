@@ -10,7 +10,6 @@ function App() {
     <>
     <Header />
     
-    <Route path= "/favorites" component = {ViewAllMovies} />
 
     <Footer />
     </>

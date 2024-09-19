@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom"
 import {Component} from 'react'
 import "./MovieCard.css"
 import { FaHeart } from "react-icons/fa";
@@ -46,7 +45,7 @@ class MovieCard extends Component {
           <p className={this.state.viewMore ? "hide" : "show" }>{overview}</p>
           {<button onClick={()=> this.handleViewMore()}>{this.state.viewMore ? "Mostrar descripción" : "Ocultar descripción"} </button>}
         <br />
-          <Link to={`/movie/id/${id}`}>Ver detalle de pelicula</Link><br />
+          <a className='texto' href={`/movie/id/${id}`}>Ver detalle de pelicula</a><br />
           <span onClick={()=>this.handleFavorite()}>
           {esFavorito ? <p> <FaHeart color="red" /> Quitar de favoritos  </p>  : <p> <FaRegHeart /> Agregar a favoritos  </p> }
         </span>

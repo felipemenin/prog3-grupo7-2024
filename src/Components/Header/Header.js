@@ -6,7 +6,7 @@ const Header = () => {
     <nav>
       <ul className="main-nav">
         <NavBar link="/" elemento="Home" />
-        <NavBar link="/favoritos" elemento="Favoritos" />
+        <NavBar link="/favorites" elemento="Favoritos" />
         <NavBar link="/peliculas" elemento="Peliculas" />
       </ul>
     </nav>
