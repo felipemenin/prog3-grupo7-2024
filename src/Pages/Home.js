@@ -49,7 +49,7 @@ class Home extends Component {
        
         <MoviesGrid movies={fiveCarteleraMovies} />
         
-        <button><a href="/favorites" style={{ textDecoration: 'none', color: 'white' }}>Ver todas</a></button>
+        <button><a href="/popular" style={{ textDecoration: 'none', color: 'white' }}>Ver todas</a></button>
 
         <h2>Peliculas populares</h2>
         <section className="movie-container">
