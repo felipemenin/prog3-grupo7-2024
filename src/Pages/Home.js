@@ -42,9 +42,7 @@ class Home extends Component {
         <main>
           <SearchForm history={this.props.history} />
           <h2>Películas populares</h2>
-
           <MoviesGrid movies={fiveCarteleraMovies} />
-
           <button>
             <a
               href="/viewall/popular"
@@ -53,7 +51,6 @@ class Home extends Component {
               Ver todas
             </a>
           </button>
-
           <h2>Películas en cartelera</h2>
           <section className="movie-container">
             <MoviesGrid movies={fivepopularMovies} />
