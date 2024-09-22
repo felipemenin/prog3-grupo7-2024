@@ -1,5 +1,6 @@
 import { Component } from "react";
 import MoviesGrid from "../Components/MoviesGrid/MoviesGrid";
+import Loading from "../Components/Loading/Loading";
 
 class ViewAllMovies extends Component {
   constructor(props) {
@@ -10,15 +11,19 @@ class ViewAllMovies extends Component {
       numeroPag: 2,
       filterValue: "",
       moviesFiltrado: [],
+      isLoading: true,
     };
   }
   componentDidMount() {
+    this.setState({
+      isLoading: true,
+    });
     fetch(
       `https://api.themoviedb.org/3/movie/${this.state.name}?api_key=709280f7a436019eb21b72bc1317fa78&anguage=en-US&page=1`
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ Movies: data.results });
+        this.setState({ Movies: data.results, isLoading: false });
       })
       .catch((e) => {
         console.log(e);
@@ -65,20 +70,29 @@ class ViewAllMovies extends Component {
           onChange={(event) => this.handleFilterChange(event)}
           value={this.state.filterValue}
         />
-        <h2>
-          Todas las películas{" "}
-          {this.state.name === "popular" ? "populares" : "en cartelera"}
-        </h2>
-        <section className="movie-container">
-          <MoviesGrid
-            movies={
-              this.state.filterValue === ""
-                ? this.state.Movies
-                : this.state.moviesFiltrado
-            }
-          />
-        </section>
-        <button onClick={() => this.handleViewMore()}>Ver más</button>
+        {!this.state.isLoading ? (
+          <>
+            {" "}
+            <h2>
+              Todas las películas{" "}
+              {this.state.name === "popular" ? "populares" : "en cartelera"}
+            </h2>
+            <section className="movie-container">
+              <MoviesGrid
+                movies={
+                  this.state.filterValue === ""
+                    ? this.state.Movies
+                    : this.state.moviesFiltrado
+                }
+              />
+            </section>
+            <button onClick={() => this.handleViewMore()}>Ver más</button>
+          </>
+        ) : (
+          <p>
+            <Loading />
+          </p>
+        )}
       </>
     );
   }
