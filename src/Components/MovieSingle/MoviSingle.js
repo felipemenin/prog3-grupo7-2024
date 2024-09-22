@@ -30,19 +30,30 @@ class MovieSingle extends Component {
       esFavorito: !this.state.esFavorito,
     });
 
-    sessionStorage.setItem("favoritos", [1,2,3])
-
+    sessionStorage.setItem("favoritos", [1, 2, 3]);
   }
- 
+
   render() {
     const movie = this.state.movie;
-    const genres = movie.genres;
-
     return (
       <main className="movie-single">
         <div>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt=""/>
-          <span onClick={() => this.handleFavorite()}>{this.state.esFavorito ? (<p>{" "}<FaHeart color="red" /> Quitar de favoritos{" "}</p>) : (<p>{" "}<FaRegHeart /> Agregar a favoritos{" "}</p>)}
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt=""
+          />
+          <span onClick={() => this.handleFavorite()}>
+            {this.state.esFavorito ? (
+              <p>
+                {" "}
+                <FaHeart color="red" /> Quitar de favoritos{" "}
+              </p>
+            ) : (
+              <p>
+                {" "}
+                <FaRegHeart /> Agregar a favoritos{" "}
+              </p>
+            )}
           </span>
         </div>
         <div className="info">

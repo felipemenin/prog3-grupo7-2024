@@ -9,7 +9,6 @@ const Header = () => {
         <NavBar link="/favorites" elemento="Favoritos" />
         <NavBar link="/viewall/popular" elemento="Populares" />
         <NavBar link="/viewall/now_playing" elemento="En cartelera" />
-
       </ul>
     </nav>
   );

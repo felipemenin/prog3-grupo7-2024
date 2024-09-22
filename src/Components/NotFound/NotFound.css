@@ -1,0 +1,13 @@
+.notFound{
+    margin: 10px;
+    text-align: center;
+}
+
+.notFound h1{
+    color: black;
+}
+
+.gif{
+    width:480px;
+    height:480px;
+}
