@@ -2,24 +2,25 @@ import { Component } from "react";
 import "./SearchForm.css"
 
 class SearchForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      inputName: "",
+      query: "",
     };
   }
 
   handleNameChange(event) {
     this.setState(
       {
-        inputName: event.target.value,
+        query: event.target.value,
       },
     //   () => console.log(this.state.inputName)
     );
   }
 
   handleFormSubmit(){
-    console.log("Form enviado", this.state.inputName)
+    this.props.history.push('/search', {query: this.state.query})
+    console.log("Form enviado")
   }
   render() {
     return (
@@ -28,8 +29,8 @@ class SearchForm extends Component {
         <input className="search-form_input"
           onChange={(event) => this.handleNameChange(event)}
           name="userName"
-          value={this.state.inputName}
-        /> <button className="search-form_button" onClick={()=> this.handleFormSubmit()} type="submit">Buscar pelicula</button>
+          value={this.state.query}
+        /> <button className="search-form_button" onClick={()=> this.handleFormSubmit()}>Buscar pelicula</button>
       </form>
       </section>
     );

@@ -40,7 +40,7 @@ class Home extends Component {
     return (
       <>
         <main>
-          <SearchForm />
+          <SearchForm history={this.props.history} />
           <h2>Peliculas populares</h2>
 
           <MoviesGrid movies={fiveCarteleraMovies} />
