@@ -35,7 +35,7 @@ class MovieCard extends Component {
     this.setState({
       esFavorito: !this.state.esFavorito,
     });
-    if (this.state.esFavorito != true) {
+    if (this.state.esFavorito !== true) {
       if (localStorage.getItem("favoritos") === null) {
         localStorage.setItem("favoritos", JSON.stringify([this.state.id]));
       } else {
@@ -49,8 +49,8 @@ class MovieCard extends Component {
     } else {
       const stringStorage = localStorage.getItem("favoritos");
       const favs = JSON.parse(stringStorage);
-      favs.pop(this.state.id);
-      const favs3 = JSON.stringify(favs);
+      const favs2 = favs.filter(id => id !== this.state.id);
+      const favs3 = JSON.stringify(favs2);
       localStorage.setItem("favoritos", favs3);
     }
   }

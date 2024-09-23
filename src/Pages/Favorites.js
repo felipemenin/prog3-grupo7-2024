@@ -13,17 +13,15 @@ class Favorites extends Component {
     if (favoritos !== null) {
       const parsedFavoritos = JSON.parse(favoritos);
       Promise.all(
-        parsedFavoritos.map((id) => 
-          fetch(
-            `https://api.themoviedb.org/3/movie/${id}?api_key=709280f7a436019eb21b72bc1317fa78`
-          )
-            .then((response) => response.json())
-            .then((data) => 
-              this.setState({ movies: [...this.state.movies, data] }, ()=>console.log('movies', this.state.movies))
-            )
-            .catch((e) => console.log(e))
-        )
-      );
+        parsedFavoritos
+          .map((id) =>
+            fetch(
+              `https://api.themoviedb.org/3/movie/${id}?api_key=709280f7a436019eb21b72bc1317fa78`
+            ).then((response) => response.json())
+          ))
+          .then((data) => this.setState({ movies: data }))
+          .catch((e) => console.log(e))
+      
     }
   }
   render() {

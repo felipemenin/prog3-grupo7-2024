@@ -49,8 +49,8 @@ class MovieSingle extends Component {
     }else{
       const stringStorage = localStorage.getItem("favoritos");
       const favs = JSON.parse(stringStorage)
-      favs.pop(this.state.movie.id)
-      const favs3 = JSON.stringify(favs)
+      const favs2 = favs.filter(id => id !== this.state.id)
+      const favs3 = JSON.stringify(favs2)
       localStorage.setItem("favoritos", favs3)
     }
 
