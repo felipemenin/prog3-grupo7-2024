@@ -11,6 +11,7 @@ class MovieSingle extends Component {
       id: props.id,
       movie: {},
       esFavorito: false,
+      genres: []
     };
   }
 
@@ -28,7 +29,7 @@ class MovieSingle extends Component {
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ movie: data });
+        this.setState({ movie: data, genres: data.genres});
       })
       .catch((error) => console.log(error));
   }
@@ -58,7 +59,7 @@ class MovieSingle extends Component {
 
   render() {
     const movie = this.state.movie;
-    console.log(this.state.movie.genres)
+    console.log("aaaaaaa",this.state.genres)
     return (
       <main className="movie-single">
         <div>
@@ -87,7 +88,11 @@ class MovieSingle extends Component {
           <p>Fecha de estreno: {movie.release_date}</p>
           <p>Duracion: {movie.runtime} minutos</p>
           <p>Sinopsis: {movie.overview}</p>
+          
           <p>Genero: </p>
+          <ul>
+            {this.state.genres.map(genre => <li key={genre.id} className="movie-genres">{genre.name}</li>)}
+          </ul>
         </div>
       </main>
     );
