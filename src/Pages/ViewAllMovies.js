@@ -19,11 +19,15 @@ class ViewAllMovies extends Component {
       isLoading: true,
     });
     fetch(
-      `https://api.themoviedb.org/3/movie/${this.state.name}?api_key=709280f7a436019eb21b72bc1317fa78&anguage=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${this.state.name}?api_key=709280f7a436019eb21b72bc1317fa78`
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ Movies: data.results, isLoading: false });
+        this.setState({
+          Movies: data.results,
+          moviesFiltrado: data.results,
+          isLoading: false,
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -35,41 +39,43 @@ class ViewAllMovies extends Component {
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ Movies: this.state.Movies.concat(data.results) });
+        this.setState({
+          Movies: this.state.Movies.concat(data.results),
+          moviesFiltrado: this.state.moviesFiltrado.concat(data.results),
+          numeroPag: this.state.numeroPag + 1,
+        });
       })
       .catch((e) => {
         console.log(e);
       });
   }
 
-  handleFilterChange(event) {
-    const newFilterValue = event.target.value;
+  handleResetFilter() { 
     this.setState({
-      filterValue: newFilterValue,
+      filterValue: "",
+      moviesFiltrado: this.state.Movies,
+    });
+  }
+  handleFilter(e) {
+    const userValue = e.target.value;
+    this.setState({
+      filterValue: userValue,
       moviesFiltrado: this.state.Movies.filter((movie) =>
-        movie.title.toLowerCase().includes(newFilterValue.toLowerCase())
+        movie.title.toLowerCase().includes(userValue.toLowerCase())
       ),
     });
-    console.log("En la filtracion se encontro", this.state.moviesFiltrado);
   }
 
   render() {
+    const peliculas = this.state.moviesFiltrado
     return (
       <>
         <input
-          style={{
-            marginTop: "10px",
-            marginLeft: "10px",
-            border: "solid 1px var(--light-gray)",
-            display: "block; width: 30%",
-            padding: "7px 35px 7px 7px",
-            borderRadius: "3px",
-            height: "25px",
-            fontSize: "1.5em;",
-          }}
-          onChange={(event) => this.handleFilterChange(event)}
+          type="text"
           value={this.state.filterValue}
+          onChange={(e) => this.handleFilter(e)}
         />
+        <button onClick={() => this.handleResetFilter()}> Reset filter</button>
         {!this.state.isLoading ? (
           <>
             {" "}
@@ -77,15 +83,7 @@ class ViewAllMovies extends Component {
               Todas las películas{" "}
               {this.state.name === "popular" ? "populares" : "en cartelera"}
             </h2>
-            <section className="movie-container">
-              <MoviesGrid
-                movies={
-                  this.state.filterValue === ""
-                    ? this.state.Movies
-                    : this.state.moviesFiltrado
-                }
-              />
-            </section>
+              <MoviesGrid movies={peliculas} />
             <button onClick={() => this.handleViewMore()}>Ver más</button>
           </>
         ) : (
