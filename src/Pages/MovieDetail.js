@@ -1,12 +1,21 @@
+import { Component } from "react";
+
 import MovieSingle from "../Components/MovieSingle/MoviSingle";
 
-const MovieDetail = (props) => {
-  console.log(props.movie);
+class MovieDetail extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      id: props.match.params.id
+    }
+  }
+  render(){
   return (
     <>
-      <MovieSingle id={props.match.params.id} />
+      <MovieSingle id={this.state.id} />
     </>
   );
+}
 };
 
 export default MovieDetail;

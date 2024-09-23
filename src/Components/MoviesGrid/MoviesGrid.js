@@ -3,6 +3,7 @@ import "./MoviesGrid.css";
 
 const MoviesGrid = (props) => {
   const { movies } = props;
+  console.log(movies)
   return (
     <>
       <section className="movie-container">

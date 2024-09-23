@@ -15,6 +15,17 @@ class MovieCard extends Component {
       esFavorito: false,
     };
   }
+  componentDidMount() {
+    if (localStorage.getItem("favoritos") != null) {
+      if (
+        JSON.parse(localStorage.getItem("favoritos").includes(this.state.id))
+      ) {
+        this.setState({
+          esFavorito: true,
+        });
+      }
+    }
+  }
   handleViewMore() {
     this.setState({
       viewMore: !this.state.viewMore,
@@ -24,6 +35,24 @@ class MovieCard extends Component {
     this.setState({
       esFavorito: !this.state.esFavorito,
     });
+    if (this.state.esFavorito != true) {
+      if (localStorage.getItem("favoritos") === null) {
+        localStorage.setItem("favoritos", JSON.stringify([this.state.id]));
+      } else {
+        const stringStorage = localStorage.getItem("favoritos");
+        const favs = JSON.parse(stringStorage);
+        favs.push(this.state.id);
+        console.log(favs);
+        const favs3 = JSON.stringify(favs);
+        localStorage.setItem("favoritos", favs3);
+      }
+    } else {
+      const stringStorage = localStorage.getItem("favoritos");
+      const favs = JSON.parse(stringStorage);
+      favs.pop(this.state.id);
+      const favs3 = JSON.stringify(favs);
+      localStorage.setItem("favoritos", favs3);
+    }
   }
 
   render() {

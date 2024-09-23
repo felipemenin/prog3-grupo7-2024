@@ -15,26 +15,50 @@ class MovieSingle extends Component {
   }
 
   componentDidMount() {
+    if(localStorage.getItem("favoritos") != null){
+      if(JSON.parse(localStorage.getItem("favoritos").includes(this.state.id))){
+        this.setState({
+          esFavorito: true
+        })
+      }
+
+    }
     fetch(
       `https://api.themoviedb.org/3/movie/${this.state.id}?api_key=709280f7a436019eb21b72bc1317fa78`
     )
       .then((response) => response.json())
       .then((data) => {
         this.setState({ movie: data });
-        console.log(data);
       })
       .catch((error) => console.log(error));
   }
   handleFavorite() {
     this.setState({
       esFavorito: !this.state.esFavorito,
-    });
+    })
+    if(this.state.esFavorito !== true){
+      if(localStorage.getItem("favoritos") === null){
+        localStorage.setItem("favoritos", JSON.stringify([this.state.movie.id]))
+      }else{
+        const stringStorage = localStorage.getItem("favoritos");
+        const favs = JSON.parse(stringStorage)
+        favs.push(this.state.movie.id)
+        const favs3 = JSON.stringify(favs)
+        localStorage.setItem("favoritos", favs3)
+      }
+    }else{
+      const stringStorage = localStorage.getItem("favoritos");
+      const favs = JSON.parse(stringStorage)
+      favs.pop(this.state.movie.id)
+      const favs3 = JSON.stringify(favs)
+      localStorage.setItem("favoritos", favs3)
+    }
 
-    sessionStorage.setItem("favoritos", [1, 2, 3]);
   }
 
   render() {
     const movie = this.state.movie;
+    console.log(this.state.movie.genres)
     return (
       <main className="movie-single">
         <div>
