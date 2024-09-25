@@ -22,7 +22,10 @@ class Home extends Component {
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ popularMovies: data.results, isLoading: false });
+        this.setState({
+          popularMovies: data.results,
+          isLoading: false,
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -32,7 +35,10 @@ class Home extends Component {
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ carteleraMovies: data.results });
+        this.setState({
+          carteleraMovies: data.results,
+          isLoading: false,
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -46,7 +52,9 @@ class Home extends Component {
       <>
         <main>
           <SearchForm history={this.props.history} />
-          {!this.state.isLoading ? (
+          {this.state.isLoading ? (
+            <Loading />
+          ) : (
             <>
               <h2>Películas populares</h2>
               <MoviesGrid movies={fiveCarteleraMovies} />
@@ -71,10 +79,6 @@ class Home extends Component {
                 </a>
               </button>
             </>
-          ) : (
-            <p>
-              <Loading />
-            </p>
           )}
         </main>
       </>

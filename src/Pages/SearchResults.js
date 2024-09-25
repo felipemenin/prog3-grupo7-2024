@@ -35,12 +35,10 @@ class SearchResults extends Component {
       <>
         <section>
           <h2>Resultados para "{this.props.location.state.query}"</h2>
-          {!this.state.isLoading ? (
-            <MoviesGrid movies={this.state.movies} />
+          {this.state.isLoading ? (
+            <Loading />
           ) : (
-            <p>
-              <Loading />
-            </p>
+            <MoviesGrid movies={this.state.movies} />
           )}
         </section>
       </>

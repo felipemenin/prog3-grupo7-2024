@@ -5,11 +5,8 @@ const NotFound = () => {
     <>
       <section className="notFound">
         <h1>Error 404</h1>
-        <iframe
-          className="gif"
-          src="https://giphy.com/embed/C21GGDOpKT6Z4VuXyn"
-          title="Error 404"
-        ></iframe>
+        <p>Page Not Found</p>
+        <img src="./images/emoji.png" alt="" />
       </section>
     </>
   );

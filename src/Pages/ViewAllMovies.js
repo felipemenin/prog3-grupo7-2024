@@ -50,7 +50,7 @@ class ViewAllMovies extends Component {
       });
   }
 
-  handleResetFilter() { 
+  handleResetFilter() {
     this.setState({
       filterValue: "",
       moviesFiltrado: this.state.Movies,
@@ -67,7 +67,7 @@ class ViewAllMovies extends Component {
   }
 
   render() {
-    const peliculas = this.state.moviesFiltrado
+    const peliculas = this.state.moviesFiltrado;
     return (
       <>
         <input
@@ -76,20 +76,17 @@ class ViewAllMovies extends Component {
           onChange={(e) => this.handleFilter(e)}
         />
         <button onClick={() => this.handleResetFilter()}> Reset filter</button>
-        {!this.state.isLoading ? (
+        {this.state.isLoading ? (
+          <Loading />
+        ) : (
           <>
-            {" "}
             <h2>
               Todas las películas{" "}
               {this.state.name === "popular" ? "populares" : "en cartelera"}
             </h2>
-              <MoviesGrid movies={peliculas} />
+            <MoviesGrid movies={peliculas} />
             <button onClick={() => this.handleViewMore()}>Ver más</button>
           </>
-        ) : (
-          <p>
-            <Loading />
-          </p>
         )}
       </>
     );
