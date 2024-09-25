@@ -24,7 +24,7 @@ class SearchForm extends Component {
   }
   render() {
     return (
-      <section>
+      <section className="container_searchForm">
         <form onSubmit={(event) => event.preventDefault()}>
           <input
             className="search-form_input"

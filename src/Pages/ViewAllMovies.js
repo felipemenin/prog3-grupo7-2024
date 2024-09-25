@@ -71,6 +71,7 @@ class ViewAllMovies extends Component {
     return (
       <>
         <input
+          className="filter"
           type="text"
           value={this.state.filterValue}
           onChange={(e) => this.handleFilter(e)}
