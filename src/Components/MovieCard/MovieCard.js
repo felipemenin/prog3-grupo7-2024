@@ -7,10 +7,6 @@ class MovieCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.title,
-      overview: this.props.overview,
-      id: this.props.id,
-      poster_path: this.props.poster_path,
       viewMore: true,
       esFavorito: false,
     };
@@ -56,7 +52,7 @@ class MovieCard extends Component {
   }
 
   render() {
-    const { title, overview, id, poster_path } = this.state;
+    const { title, overview, id, poster_path } = this.props;
     const { esFavorito } = this.state;
     return (
       <>
