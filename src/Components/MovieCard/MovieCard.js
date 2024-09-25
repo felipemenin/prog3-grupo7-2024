@@ -7,6 +7,7 @@ class MovieCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.id,
       viewMore: true,
       esFavorito: false,
     };
