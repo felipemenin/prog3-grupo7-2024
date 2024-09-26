@@ -1,8 +1,8 @@
 .footer {
-    background-color: #111111;
+    background-color: black;
     text-align: center;
-    padding: 40px 0;
-    color: #faf7f7;
+    padding: 30px 0;
+    color: white;
     position: absolute;
     width: 100%;
 }

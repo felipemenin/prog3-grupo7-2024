@@ -1,23 +1,5 @@
 .textoNavBar {
     color: white;
     text-decoration: none;
-}
-.main-nav li,
-.user li {
-    margin: 0 10px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none;
-}
-
-.main-nav li:first-child {
-    font-weight: bold;
-}
-
-.user img {
-    width: 30px;
-    border-radius: 90%;
-    margin-left: 10px;
+    font-size: large;
 }

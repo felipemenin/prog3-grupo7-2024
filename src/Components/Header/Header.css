@@ -1,23 +1,24 @@
 nav{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 20px;
-    background-color: #080809;
-    color: #fff
+    background-color: black;
 }
 
 nav ul {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
 }
 
+.main-nav li{
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-decoration: none;
+}
 
-.user img {
-    width: 1px;
-    border-radius: 90%;
-    margin-left: 10px;
+.main-nav li:first-child {
+    font-weight: bold;
 }

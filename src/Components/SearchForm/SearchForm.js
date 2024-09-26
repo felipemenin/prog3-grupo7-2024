@@ -10,12 +10,9 @@ class SearchForm extends Component {
   }
 
   handleNameChange(event) {
-    this.setState(
-      {
-        query: event.target.value,
-      }
-      //   () => console.log(this.state.inputName)
-    );
+    this.setState({
+      query: event.target.value,
+    });
   }
 
   handleFormSubmit() {

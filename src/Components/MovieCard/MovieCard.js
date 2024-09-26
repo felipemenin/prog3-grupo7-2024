@@ -46,7 +46,7 @@ class MovieCard extends Component {
     } else {
       const stringStorage = localStorage.getItem("favoritos");
       const favs = JSON.parse(stringStorage);
-      const favs2 = favs.filter(id => id !== this.state.id);
+      const favs2 = favs.filter((id) => id !== this.state.id);
       const favs3 = JSON.stringify(favs2);
       localStorage.setItem("favoritos", favs3);
     }
@@ -76,12 +76,10 @@ class MovieCard extends Component {
           <span onClick={() => this.handleFavorite()}>
             {esFavorito ? (
               <p>
-                {" "}
                 <FaHeart color="red" /> Quitar de favoritos{" "}
               </p>
             ) : (
               <p>
-                {" "}
                 <FaRegHeart /> Agregar a favoritos{" "}
               </p>
             )}

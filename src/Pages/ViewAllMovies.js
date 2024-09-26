@@ -73,20 +73,45 @@ class ViewAllMovies extends Component {
         <input
           className="filter"
           type="text"
+          placeholder="Filtrar por título..."
           value={this.state.filterValue}
           onChange={(e) => this.handleFilter(e)}
         />
-        <button onClick={() => this.handleResetFilter()}> Reset filter</button>
+        <button
+          className="search-form_button"
+          onClick={() => this.handleResetFilter()}
+        >
+          {" "}
+          Reset filter
+        </button>
         {this.state.isLoading ? (
           <Loading />
         ) : (
           <>
-            <h2>
-              Todas las películas{" "}
-              {this.state.name === "popular" ? "populares" : "en cartelera"}
-            </h2>
-            <MoviesGrid movies={peliculas} />
-            <button onClick={() => this.handleViewMore()}>Ver más</button>
+            {!this.state.filterValue ? (
+              <>
+                {" "}
+                <h2>
+                  Todas las películas{" "}
+                  {this.state.name === "popular" ? "populares" : "en cartelera"}
+                </h2>
+              </>
+            ) : (
+              ""
+            )}
+            {peliculas.length !== 0 ? (
+              <>
+                {" "}
+                <MoviesGrid movies={peliculas} />
+              </>
+            ) : (
+              <h2>No hay peliculas disponibles</h2>
+            )}
+            {!this.state.filterValue ? (
+              <button onClick={() => this.handleViewMore()}>Ver más</button>
+            ) : (
+              ""
+            )}
           </>
         )}
       </>
