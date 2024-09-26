@@ -2,6 +2,7 @@ import { Component } from "react";
 import "./MovieCard.css";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
   constructor(props) {
@@ -57,22 +58,22 @@ class MovieCard extends Component {
     const { esFavorito } = this.state;
     return (
       <>
-        <div className="movie-card">
-          <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt="" />
-          <h4>{title}</h4>
+        <article href={`/movie/${id}`} className="movie-card">
+          <Link className="titulo" to={`/movie/${id}`}>
+            <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt="" />
+            <h4>{title}</h4>
+          </Link>
           <p className={this.state.viewMore ? "hide" : "show"}>{overview}</p>
           {
-            <button onClick={() => this.handleViewMore()}>
+            <button
+              className="verDescripcion"
+              onClick={() => this.handleViewMore()}
+            >
               {this.state.viewMore
                 ? "Mostrar descripción"
                 : "Ocultar descripción"}{" "}
             </button>
           }
-          <br />
-          <a className="texto" href={`/movie/${id}`}>
-            Ver detalle de pelicula
-          </a>
-          <br />
           <span onClick={() => this.handleFavorite()}>
             {esFavorito ? (
               <p>
@@ -84,7 +85,7 @@ class MovieCard extends Component {
               </p>
             )}
           </span>
-        </div>
+        </article>
       </>
     );
   }
