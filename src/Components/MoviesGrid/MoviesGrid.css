@@ -1,9 +1,8 @@
 .movie-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
-
+    margin: 5px;
     }
 body {
     margin: 0;
@@ -44,6 +43,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin-top: 10px;
+    margin-left: 20px;
   }
   
   button:hover {
