@@ -1,7 +1,7 @@
 import { Component } from "react";
 import MoviesGrid from "../Components/MoviesGrid/MoviesGrid";
 import SearchForm from "../Components/SearchForm/SearchForm";
-import Loading from "../Components/Loading/Loading";
+import Loader from "../Components/Loader/Loader";
 
 class Home extends Component {
   constructor(props) {
@@ -22,10 +22,12 @@ class Home extends Component {
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({
-          popularMovies: data.results,
-          isLoading: false,
-        });
+        setTimeout(() => {
+          this.setState({
+            popularMovies: data.results,
+            isLoading: false,
+          });
+        }, 1000);
       })
       .catch((e) => {
         console.log(e);
@@ -51,11 +53,11 @@ class Home extends Component {
     return (
       <>
         <main>
-          <SearchForm history={this.props.history} />
-          {this.state.isLoading ? (
-            <Loading />
-          ) : (
+          {!this.state.isLoading &&
+          fiveCarteleraMovies.length > 0 &&
+          fivepopularMovies.length > 0 ? (
             <>
+              <SearchForm history={this.props.history} />
               <h2>Películas populares</h2>
               <MoviesGrid movies={fiveCarteleraMovies} />
               <button>
@@ -79,6 +81,8 @@ class Home extends Component {
                 </a>
               </button>
             </>
+          ) : (
+            <Loader />
           )}
         </main>
       </>

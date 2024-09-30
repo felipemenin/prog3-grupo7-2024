@@ -1,5 +1,4 @@
 import { Component } from "react";
-
 import MovieSingle from "../Components/MovieSingle/MoviSingle";
 
 class MovieDetail extends Component {

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import MoviesGrid from "../Components/MoviesGrid/MoviesGrid";
-import Loading from "../Components/Loading/Loading";
+import Loader from "../Components/Loader/Loader";
 
 class Favorites extends Component {
   constructor(props) {
@@ -24,24 +24,30 @@ class Favorites extends Component {
           ).then((response) => response.json())
         )
       )
-        .then((data) => this.setState({
-           movies: data,
-           isLoading: false
-           }))
+        .then((data) =>
+          setTimeout(() => {
+            this.setState({
+              movies: data,
+              isLoading: false,
+            });
+          }, 1000)
+        )
         .catch((e) => console.log(e));
     }
   }
   render() {
     return (
       <>
-        {this.state.loading ? (
-          <Loading />
-        ) : (
-          <>
-            <h1>Tus peliculas favoritas</h1>
-            <MoviesGrid movies={this.state.movies} />
-          </>
-        )}
+        <section>
+          {!this.state.loading && this.state.movies.length > 0 ? (
+            <>
+              <h2>Tus peliculas favoritas</h2>
+              <MoviesGrid movies={this.state.movies} />
+            </>
+          ) : (
+            <Loader />
+          )}
+        </section>
       </>
     );
   }

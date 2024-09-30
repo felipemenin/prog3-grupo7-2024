@@ -1,6 +1,6 @@
 import { Component } from "react";
 import MoviesGrid from "../Components/MoviesGrid/MoviesGrid";
-import Loading from "../Components/Loading/Loading";
+import Loader from "../Components/Loader/Loader";
 
 class ViewAllMovies extends Component {
   constructor(props) {
@@ -23,11 +23,13 @@ class ViewAllMovies extends Component {
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({
-          Movies: data.results,
-          moviesFiltrado: data.results,
-          isLoading: false,
-        });
+        setTimeout(() => {
+          this.setState({
+            Movies: data.results,
+            moviesFiltrado: data.results,
+            isLoading: false,
+          });
+        }, 1000);
       })
       .catch((e) => {
         console.log(e);
@@ -70,50 +72,52 @@ class ViewAllMovies extends Component {
     const peliculas = this.state.moviesFiltrado;
     return (
       <>
-        <input
-          className="filter"
-          type="text"
-          placeholder="Filtrar por título..."
-          value={this.state.filterValue}
-          onChange={(e) => this.handleFilter(e)}
-        />
-        <button
-          className="search-form_button"
-          onClick={() => this.handleResetFilter()}
-        >
-          {" "}
-          Reset filter
-        </button>
-        {this.state.isLoading ? (
-          <Loading />
-        ) : (
-          <>
-            {!this.state.filterValue ? (
-              <>
-                {" "}
-                <h2>
-                  Todas las películas{" "}
-                  {this.state.name === "popular" ? "populares" : "en cartelera"}
-                </h2>
-              </>
-            ) : (
-              ""
-            )}
-            {peliculas.length !== 0 ? (
-              <>
-                {" "}
-                <MoviesGrid movies={peliculas} />
-              </>
-            ) : (
-              <h2>No hay peliculas disponibles</h2>
-            )}
-            {!this.state.filterValue ? (
-              <button onClick={() => this.handleViewMore()}>Ver más</button>
-            ) : (
-              ""
-            )}
-          </>
-        )}
+        <section>
+          {!this.state.isLoading && this.state.Movies.length > 0 ? (
+            <>
+              {" "}
+              <input
+                className="filter"
+                type="text"
+                placeholder="Filtrar por título..."
+                value={this.state.filterValue}
+                onChange={(e) => this.handleFilter(e)}
+              />
+              <button
+                className="search-form_button"
+                onClick={() => this.handleResetFilter()}
+              >
+                Reset filter
+              </button>
+              {!this.state.filterValue ? (
+                <>
+                  <h2>
+                    Todas las películas{" "}
+                    {this.state.name === "popular"
+                      ? "populares"
+                      : "en cartelera"}
+                  </h2>
+                </>
+              ) : (
+                ""
+              )}
+              {peliculas.length !== 0 ? (
+                <>
+                  <MoviesGrid movies={peliculas} />
+                </>
+              ) : (
+                <h2>No hay peliculas disponibles</h2>
+              )}
+              {!this.state.filterValue ? (
+                <button onClick={() => this.handleViewMore()}>Ver más</button>
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            <Loader />
+          )}
+        </section>
       </>
     );
   }

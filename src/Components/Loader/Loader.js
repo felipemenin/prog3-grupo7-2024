@@ -1,14 +1,13 @@
-import "./Loading.css";
+import "./Loader.css";
 
-const Loading = () => {
-  <>
-    <div>
+const Loader = () => {
+  return (
+    <div className="loader">
       <svg
-        className="loading"
+        className="gif"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 200 200"
       >
-        <rect fill="#FFF" width="100%" height="100%" />
         <rect
           fill="#000000"
           stroke="#000000"
@@ -68,7 +67,7 @@ const Loading = () => {
         </rect>
       </svg>
     </div>
-  </>;
+  );
 };
 
-export default Loading;
+export default Loader;

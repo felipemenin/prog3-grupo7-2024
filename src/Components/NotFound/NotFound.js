@@ -5,8 +5,8 @@ const NotFound = () => {
     <>
       <section className="notFound">
         <h1>Error 404</h1>
+        <img src="./images/gif.gif" alt="" />
         <p>Page Not Found</p>
-        <img src="./images/emoji.png" alt="" />
       </section>
     </>
   );

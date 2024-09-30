@@ -40,7 +40,6 @@ class MovieCard extends Component {
         const stringStorage = localStorage.getItem("favoritos");
         const favs = JSON.parse(stringStorage);
         favs.push(this.state.id);
-        console.log(favs);
         const favs3 = JSON.stringify(favs);
         localStorage.setItem("favoritos", favs3);
       }
@@ -71,17 +70,17 @@ class MovieCard extends Component {
             >
               {this.state.viewMore
                 ? "Mostrar descripción"
-                : "Ocultar descripción"}{" "}
+                : "Ocultar descripción"}
             </button>
           }
           <span onClick={() => this.handleFavorite()}>
             {esFavorito ? (
               <p>
-                <FaHeart color="red" /> Quitar de favoritos{" "}
+                <FaHeart color="red" /> Quitar de favoritos
               </p>
             ) : (
               <p>
-                <FaRegHeart /> Agregar a favoritos{" "}
+                <FaRegHeart /> Agregar a favoritos
               </p>
             )}
           </span>

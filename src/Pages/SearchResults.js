@@ -1,6 +1,6 @@
 import { Component } from "react";
 import MoviesGrid from "../Components/MoviesGrid/MoviesGrid";
-import Loading from "../Components/Loading/Loading";
+import Loader from "../Components/Loader/Loader";
 
 class SearchResults extends Component {
   constructor(props) {
@@ -20,10 +20,12 @@ class SearchResults extends Component {
     )
       .then((response) => response.json())
       .then((data) => {
-        this.setState({
-          movies: data.results,
-          isLoading: false,
-        });
+        setTimeout(() => {
+          this.setState({
+            movies: data.results,
+            isLoading: false,
+          });
+        }, 1000);
       })
       .catch((e) => {
         console.log(e);
@@ -34,17 +36,20 @@ class SearchResults extends Component {
     return (
       <>
         <section>
-          {this.state.movies.length > 0 ? (
+          {!this.state.isLoading ? (
             <>
               <h2>Resultados para "{this.props.location.state.query}"</h2>
-              {this.state.isLoading ? (
-                <Loading />
-              ) : (
+              {this.state.movies.length > 0 ? (
                 <MoviesGrid movies={this.state.movies} />
+              ) : (
+                <h2>
+                  No hay resultados para tu busqueda "
+                  {this.props.location.state.query}"
+                </h2>
               )}
             </>
           ) : (
-            <h2>No hay resultados para tu busqueda "{this.props.location.state.query}"</h2>
+            <Loader />
           )}
         </section>
       </>

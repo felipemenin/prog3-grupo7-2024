@@ -17,7 +17,6 @@ class SearchForm extends Component {
 
   handleFormSubmit() {
     this.props.history.push("/search", { query: this.state.query });
-    console.log("Form enviado");
   }
   render() {
     return (
@@ -28,7 +27,7 @@ class SearchForm extends Component {
             onChange={(event) => this.handleNameChange(event)}
             name="userName"
             value={this.state.query}
-          />{" "}
+          />
           <button
             className="search-form_button"
             onClick={() => this.handleFormSubmit()}
