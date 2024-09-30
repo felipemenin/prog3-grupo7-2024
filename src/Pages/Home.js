@@ -27,7 +27,7 @@ class Home extends Component {
             popularMovies: data.results,
             isLoading: false,
           });
-        }, 1000);
+        }, 500);
       })
       .catch((e) => {
         console.log(e);

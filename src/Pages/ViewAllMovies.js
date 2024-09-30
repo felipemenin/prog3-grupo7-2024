@@ -29,7 +29,7 @@ class ViewAllMovies extends Component {
             moviesFiltrado: data.results,
             isLoading: false,
           });
-        }, 1000);
+        }, 500);
       })
       .catch((e) => {
         console.log(e);
@@ -75,7 +75,6 @@ class ViewAllMovies extends Component {
         <section>
           {!this.state.isLoading && this.state.Movies.length > 0 ? (
             <>
-              {" "}
               <input
                 className="filter"
                 type="text"

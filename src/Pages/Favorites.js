@@ -30,7 +30,7 @@ class Favorites extends Component {
               movies: data,
               isLoading: false,
             });
-          }, 1000)
+          }, 500)
         )
         .catch((e) => console.log(e));
     }
@@ -39,10 +39,16 @@ class Favorites extends Component {
     return (
       <>
         <section>
-          {!this.state.loading && this.state.movies.length > 0 ? (
+          {!this.state.isLoading ? (
             <>
-              <h2>Tus peliculas favoritas</h2>
-              <MoviesGrid movies={this.state.movies} />
+              {this.state.movies.length > 0 ? (
+                <>
+                  <h2>Tus peliculas favoritas</h2>
+                  <MoviesGrid movies={this.state.movies} />
+                </>
+              ) : (
+                <h2>No tienes peliculas favoritas</h2>
+              )}
             </>
           ) : (
             <Loader />

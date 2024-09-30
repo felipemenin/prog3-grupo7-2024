@@ -25,7 +25,7 @@ class SearchResults extends Component {
             movies: data.results,
             isLoading: false,
           });
-        }, 1000);
+        }, 500);
       })
       .catch((e) => {
         console.log(e);

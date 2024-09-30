@@ -36,7 +36,7 @@ class MovieSingle extends Component {
       .then((data) => {
         setTimeout(() => {
           this.setState({ movie: data, genres: data.genres, isLoading: false });
-        }, 1000);
+        }, 500);
       })
       .catch((error) => console.log(error));
   }
