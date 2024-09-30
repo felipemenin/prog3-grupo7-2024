@@ -76,6 +76,7 @@ class MovieSingle extends Component {
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt=""
+                className="movie-img"
               />
               <span onClick={() => this.handleFavorite()}>
                 {this.state.esFavorito ? (
