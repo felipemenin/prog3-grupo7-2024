@@ -1,56 +1,107 @@
-.movie-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 5px;
-    }
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: whitesmoke;
-    color: #e0e0e0;
-  }
-  
-  
-  header {
-    background-color: #000;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  header h1 {
-    color: #ff4757;
-    font-size: 36px;
-    margin: 0;
-  }
-  
-  /* Títulos */
-  h2 {
-    font-size: 28px;
-    color: black;
-    margin-bottom: 20px;
-  }
-  
-  /* Botones */
-  button {
-    display: inline-block;
-    background-color: #111010;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 10px;
-    margin-left: 20px;
-  }
-  
-  button:hover {
-    background-color: #ff4757;
-    transform: translateY(-3px);
-  }
-  
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: whitesmoke;
+  color: #e0e0e0;
+}
 
-  
-      
+header {
+  background-color: #000;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  color: #ff4757;
+  font-size: 36px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 28px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center;
+  margin: 5px;
+}
+
+.movie-container div {
+  background-color: #111010;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  flex: 1 1 200px; 
+  max-width: 300px;
+  color: white;
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  background-color: #111010;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+button:hover {
+  background-color: #ff4757;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  header h1 {
+      font-size: 28px; 
+  }
+
+  h2 {
+      font-size: 24px; 
+  }
+
+  button {
+      font-size: 14px; 
+      padding: 8px 16px;
+  }
+
+  .movie-container div {
+      flex: 1 1 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+      font-size: 22px;
+  }
+
+  h2 {
+      font-size: 20px; 
+  }
+
+  button {
+      font-size: 12px;
+      padding: 6px 12px;
+      margin-left: 0;
+  }
+
+  .movie-container {
+      flex-direction: column; 
+  }
+
+  .movie-container div {
+      max-width: 100%;
+      margin: 5px 0;
+  }
+}
